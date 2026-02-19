@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+        <h2 style="
+            color: #7899b9;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: 8px 8px 8px #b2bec3, 0 2px 0 #fff;
+            margin-bottom: 30px;">
+            WELCOME TO <span style="color:#092441; text-shadow:0 2px 8px #74b9ff;">BURNOUT  PREDICTOR</span>
+        </h2>
+        <div style="margin-top:35px;">
+            <a href="{{ url_for('register') }}" style="display:inline-block; padding:12px 32px; margin:10px; background:#007bff; color:#fff; border:none; border-radius:5px; text-decoration:none; font-size:18px;">Register</a>
+            <a href="{{ url_for('login') }}" style="display:inline-block; padding:12px 32px; margin:10px; background:#28a745; color:#fff; border:none; border-radius:5px; text-decoration:none; font-size:18px;">Login</a>
+        </div>
+</div>
+</body>
+</html>

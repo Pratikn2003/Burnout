@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Monthly Report</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2 style="text-align:center;">📊 30-Day Work & Burnout Report</h2>
+
+<div style="width:75%; margin:auto;">
+    <canvas id="reportChart"></canvas>
+</div>
+
+<script>
+const labels = {{ dates | tojson }};
+
+const workHours   = {{ work_hours | tojson }};
+const screenTime  = {{ screen_time | tojson }};
+const sleepHours  = {{ sleep_hours | tojson }};
+const taskRate    = {{ task_rate | tojson }};
+
+const ctx = document.getElementById('reportChart').getContext('2d');
+
+new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Work Hours',
+                data: workHours,
+                borderColor: '#6f42c1',
+                tension: 0.3
+            },
+            {
+                label: 'Screen Time (hrs)',
+                data: screenTime,
+                borderColor: '#dc3545',
+                tension: 0.3
+            },
+            {
+                label: 'Sleep Hours',
+                data: sleepHours,
+                borderColor: '#28a745',
+                tension: 0.3
+            },
+            {
+                label: 'Task Completion (%)',
+                data: taskRate,
+                borderColor: '#0d6efd',
+                tension: 0.3
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+<div style="text-align:center; margin-top:20px;">
+    <a href="{{ url_for('dashboard') }}">
+        <button>⬅ Back to Dashboard</button>
+    </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Burnout Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container" style="text-align:center;">
+  <h1>Your Burnout Level</h1>
+
+  {% if level == "High" %}
+    <h2 style="color:red;">🔥 High Burnout Risk</h2>
+  {% elif level == "Medium" %}
+    <h2 style="color:orange;">⚠️ Medium Burnout Risk</h2>
+  {% else %}
+    <h2 style="color:green;">✅ Low Burnout Risk</h2>
+  {% endif %}
+
+  <a href="/dashboard"><button>Back to Dashboard</button></a>
+  <a href="/history"><button>View Monthly Report</button></a>
+</div>
+
+</body>
+</html>

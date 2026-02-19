@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu | Burnout Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container" style="text-align:center; margin-top:60px;">
+
+    <h1>🏠 Home Menu</h1>
+    <p>Select what you want to do</p>
+
+    <!-- ONLY way to open dashboard -->
+    <a href="{{ url_for('dashboard') }}">
+        <button style="width:280px;">🔥 Burnout Predictor</button>
+    </a>
+
+    <br><br>
+
+    <a href="{{ url_for('history') }}">
+        <button style="width:280px;">📊 All-Time History</button>
+    </a>
+
+    <br><br>
+
+    <a href="{{ url_for('suggestion') }}">
+        <button style="width:280px;">💡 Suggestions</button>
+    </a>
+
+    <br><br><br>
+
+    <a href="{{ url_for('logout') }}">
+        <button style="background:#ff4d4d; width:280px;">🚪 Logout</button>
+    </a>
+
+</div>
+
+</body>
+</html>

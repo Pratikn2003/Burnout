@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Registration Details</h2>
+
+    <p><b>Name:</b> {{ name }}</p>
+    <p><b>Date of Birth:</b> {{ dob }}</p>
+    <p><b>Mobile Number:</b> {{ mobile }}</p>
+    <p><b>Profession:</b> {{ profession }}</p>
+    <p><b>Your User ID:</b> <span style="color:#4facfe;">{{ user_id }}</span></p>
+
+    <hr>
+
+    <p class="small-text">
+        Please save your User ID. You will need it for login.
+    </p>
+
+    <a href="/set-password">
+        <button>Create Password</button>
+    </a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Burnout Predictor</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #426a92;
+            margin: 0;
+        }
+
+        .navbar {
+            background: #222;
+            padding: 12px 20px;
+        }
+
+        .navbar a {
+            color: white;
+            margin-right: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #00ffcc;
+        }
+
+        .container {
+            width: 450px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0 15px;
+            border-radius: 5px;
+            border: 1px solid #e6e3e3;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 🔹 NAVBAR -->
+<div class="navbar">
+    <a href="{{ url_for('menu') }}">🏠 Home</a>
+    <a href="{{ url_for('history') }}">📊 History</a>
+    <a href="{{ url_for('logout') }}">🚪 Logout</a>
+</div>
+
+<!-- 🔹 DASHBOARD FORM -->
+<div class="container">
+    <h2>🧠 Burnout Predictor</h2>
+
+    <form method="POST" action="{{ url_for('predict') }}">
+
+        <label>💼 Work Hours (per day)</label>
+        <input type="number" name="work_hours" step="0.1" required>
+
+        <label>📱 Screen Time (hours)</label>
+        <input type="number" name="screen_time" step="0.1" required>
+
+        <label>📅 Meetings Count</label>
+        <input type="number" name="meetings" min="0" required>
+
+        <label>☕ Breaks Taken</label>
+        <input type="number" name="breaks" min="0" required>
+
+        <label>🌙 After-Hours Work?</label>
+        <select name="after_hours" required>
+            <option value="">-- Select --</option>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label>😴 Sleep Hours</label>
+        <input type="number" name="sleep" step="0.1" required>
+
+        <label>✅ Task Completion Rate (%)</label>
+        <input type="number" name="task_rate" step="0.1" min="0" max="100" required>
+
+        <button type="submit">🔍 Predict Burnout</button>
+    </form>
+</div>
+
+</body>
+</html>
