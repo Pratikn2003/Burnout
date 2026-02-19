@@ -4,7 +4,12 @@ from datetime import date
 import joblib
 
 app = Flask(__name__)
-app.secret_key = "burnout_secret_key"
+# Get secret key from environment variable
+# In production, always set a strong SECRET_KEY environment variable
+secret_key = os.environ.get("SECRET_KEY", "burnout_secret_key")
+if secret_key == "burnout_secret_key":
+    print("⚠️  WARNING: Using default SECRET_KEY. Set SECRET_KEY environment variable for production!")
+app.secret_key = secret_key
 
 # ---------------- LOAD ML MODEL ----------------
 try:
@@ -263,4 +268,7 @@ def logout():
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Use environment variable for debug mode, default to False for production
+    debug_mode = os.environ.get("FLASK_DEBUG", "False").lower() == "true"
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=debug_mode, host="0.0.0.0", port=port)
