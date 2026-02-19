@@ -45,7 +45,7 @@ The application tracks the following daily metrics:
 
 2. **Install dependencies**
    ```bash
-   pip install flask scikit-learn pandas joblib
+   pip install -r requirements.txt
    ```
 
 3. **Run the application**
