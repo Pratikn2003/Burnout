@@ -14,7 +14,7 @@ A Flask-based web application that predicts burnout levels using machine learnin
 
 ### Prerequisites
 
-- Python 3.8 or higher
+- Python 3.10 or higher (Python 3.12 recommended)
 - pip (Python package manager)
 
 ### Installation

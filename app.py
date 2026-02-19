@@ -4,7 +4,12 @@ from datetime import date
 import joblib
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "burnout_secret_key")
+# Get secret key from environment variable
+# In production, always set a strong SECRET_KEY environment variable
+secret_key = os.environ.get("SECRET_KEY", "burnout_secret_key")
+if secret_key == "burnout_secret_key":
+    print("⚠️  WARNING: Using default SECRET_KEY. Set SECRET_KEY environment variable for production!")
+app.secret_key = secret_key
 
 # ---------------- LOAD ML MODEL ----------------
 try:
