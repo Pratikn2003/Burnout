@@ -3,20 +3,84 @@
 <head>
   <title>Burnout Result</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .result-container {
+      width: 500px;
+      max-width: 95vw;
+      margin: 60px auto;
+      background: #ffffff;
+      padding: 30px 35px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      text-align: center;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    .suggestions-box {
+      margin-top: 25px;
+      text-align: left;
+      border-radius: 8px;
+      padding: 18px 20px;
+    }
+    .suggestions-box.high   { background: #fff5f5; border-left: 5px solid #e53e3e; }
+    .suggestions-box.medium { background: #fffaf0; border-left: 5px solid #dd6b20; }
+    .suggestions-box.low    { background: #f0fff4; border-left: 5px solid #38a169; }
+    .suggestions-box h3 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      color: #444;
+    }
+    .suggestion-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #333;
+      line-height: 1.5;
+    }
+    .suggestion-item .icon {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .github-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 13px;
+      color: #4facfe;
+    }
+    .github-link:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
 
-<div class="container" style="text-align:center;">
+<div class="result-container">
   <h1>Your Burnout Level</h1>
 
   {% if level == "High" %}
-    <h2 style="color:red;">🔥 High Burnout Risk</h2>
+    <h2 style="color:#e53e3e;">🔥 High Burnout Risk</h2>
   {% elif level == "Medium" %}
-    <h2 style="color:orange;">⚠️ Medium Burnout Risk</h2>
+    <h2 style="color:#dd6b20;">⚠️ Medium Burnout Risk</h2>
   {% else %}
-    <h2 style="color:green;">✅ Low Burnout Risk</h2>
+    <h2 style="color:#38a169;">✅ Low Burnout Risk</h2>
   {% endif %}
 
+  {% if suggestions %}
+  <div class="suggestions-box {{ level | lower }}">
+    <h3>💡 Personalized Suggestions</h3>
+    {% for s in suggestions %}
+    <div class="suggestion-item">
+      <span class="icon">{{ s.icon }}</span>
+      <span>{{ s.text }}</span>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <a href="https://github.com/Pratikn2003/Burnout" target="_blank" class="github-link">
+    🔗 View Burnout Predictor on GitHub
+  </a>
+
+  <br><br>
   <a href="/dashboard"><button>Back to Dashboard</button></a>
   <a href="/history"><button>View Monthly Report</button></a>
 </div>
