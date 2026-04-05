@@ -67,3 +67,23 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# SQLite database (user data — do not commit)
+*.db
+
+# Python egg / dist
+*.egg-info/
+dist/
+build/
+

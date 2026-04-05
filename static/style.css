@@ -1,0 +1,158 @@
+/* ---------- Global ---------- */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #74b9ff 0%, #a29bfe 100%);
+    position: relative;
+    overflow-x: hidden;
+    
+
+}
+
+
+/* ---------- Container ---------- */
+.container {
+    width: 360px;
+    margin: 80px auto;
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* Animated floating shapes */
+.bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.18;
+    z-index: 0;
+    animation: float 8s ease-in-out infinite;
+}
+.bg-shape1 {
+    width: 320px;
+    height: 320px;
+    left: -80px;
+    top: -80px;
+    background: radial-gradient(circle, #00b894 60%, #0984e3 100%);
+    animation-delay: 0s;
+}
+.bg-shape2 {
+    width: 220px;
+    height: 220px;
+    right: -60px;
+    top: 120px;
+    background: radial-gradient(circle, #fdcb6e 60%, #e17055 100%);
+    animation-delay: 2s;
+}
+.bg-shape3 {
+    width: 180px;
+    height: 180px;
+    left: 40px;
+    bottom: -60px;
+    background: radial-gradient(circle, #6c5ce7 60%, #b2bec3 100%);
+    animation-delay: 4s;
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+
+/* ---------- Headings ---------- */
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* ---------- Inputs & Select ---------- */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* ---------- Buttons ---------- */
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background: #4facfe;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00c6ff;
+}
+
+/* ---------- Links ---------- */
+a {
+    text-decoration: none;
+    color: #4facfe;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Messages ---------- */
+.msg-success {
+    color: green;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.msg-error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* ---------- Small Text ---------- */
+.small-text {
+    font-size: 13px;
+    margin-top: 15px;
+    color: #666;
+}
+label {
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+.container {
+    animation: fadeIn 0.8s ease-in-out;
+}
+.navbar {
+    background: #222;
+    padding: 12px;
+}
+
+.navbar a {
+    color: white;
+    margin-right: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    color: #00ffcc;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
