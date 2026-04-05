@@ -183,6 +183,36 @@ def dashboard():
         return redirect(url_for("login"))
     return render_template("dashboard.html")
 
+# ---------------- SUGGESTIONS ----------------
+def get_suggestions(level):
+    if level == "High":
+        return [
+            {"icon": "🛑", "text": "Take immediate time off or a mental health day to recover."},
+            {"icon": "⏰", "text": "Reduce your daily work hours and set strict boundaries between work and rest."},
+            {"icon": "🧠", "text": "Seek support from a mental health professional or counsellor."},
+            {"icon": "📵", "text": "Disconnect from work emails and notifications outside working hours."},
+            {"icon": "🤝", "text": "Talk to your manager about redistributing your workload."},
+            {"icon": "😴", "text": "Prioritise at least 7–8 hours of quality sleep each night."},
+        ]
+    elif level == "Medium":
+        return [
+            {"icon": "⚖️", "text": "Establish a healthier work-life balance by scheduling personal time daily."},
+            {"icon": "☕", "text": "Take regular short breaks throughout the day (e.g., the Pomodoro technique)."},
+            {"icon": "🏃", "text": "Incorporate light exercise or a short walk into your daily routine."},
+            {"icon": "📝", "text": "Review your task list and delegate or defer non-urgent items."},
+            {"icon": "🧘", "text": "Try mindfulness or relaxation techniques such as deep breathing or meditation."},
+            {"icon": "👥", "text": "Stay connected with friends or colleagues for social support."},
+        ]
+    else:
+        return [
+            {"icon": "✅", "text": "Keep up your current healthy habits — you're doing great!"},
+            {"icon": "🌱", "text": "Continue maintaining a consistent sleep schedule for long-term wellness."},
+            {"icon": "📅", "text": "Plan regular activities you enjoy to sustain positive energy levels."},
+            {"icon": "💧", "text": "Stay hydrated and maintain a balanced diet to support focus and mood."},
+            {"icon": "📊", "text": "Monitor your stress levels periodically so you catch changes early."},
+            {"icon": "🎯", "text": "Set realistic goals and celebrate small achievements to stay motivated."},
+        ]
+
 # ---------------- PREDICT ----------------
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -222,7 +252,8 @@ def predict():
     conn.commit()
     conn.close()
 
-    return render_template("result.html", level=burnout_level)
+    suggestions = get_suggestions(burnout_level)
+    return render_template("result.html", level=burnout_level, suggestions=suggestions)
 
 # ---------------- HISTORY ----------------
 @app.route("/history")
