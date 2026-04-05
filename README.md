@@ -23,7 +23,7 @@ curl http://localhost:5000/joke
 **Success response (`200 OK`):**
 ```json
 {
-  "joke": "Why do programmers prefer dark mode? Because light attracts bugs!",
+  "joke": "Why do programmers prefer dark mode? ... Because light attracts bugs!",
   "type": "twopart"
 }
 ```

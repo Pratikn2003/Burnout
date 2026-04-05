@@ -32,5 +32,5 @@ def fetch_joke():
         return {"error": "Could not connect to joke API."}
     except requests.exceptions.HTTPError as e:
         return {"error": f"Joke API request failed: {e}"}
-    except Exception as e:
-        return {"error": f"Unexpected error: {e}"}
+    except Exception:
+        return {"error": "An unexpected error occurred while fetching a joke."}
