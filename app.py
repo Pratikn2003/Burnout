@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 import sqlite3, hashlib, random, re, os
 from datetime import date
 import joblib
+from joke_generator import fetch_joke
 
 app = Flask(__name__, template_folder=".")
 app.secret_key = os.environ.get("SECRET_KEY", "burnout_secret_key")
@@ -260,6 +261,14 @@ def history():
 def logout():
     session.clear()
     return redirect(url_for("login"))
+
+# ---------------- JOKE ----------------
+@app.route("/joke")
+def joke():
+    result = fetch_joke()
+    if "error" in result:
+        return jsonify(result), 503
+    return jsonify(result)
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
