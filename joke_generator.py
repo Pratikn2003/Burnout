@@ -30,7 +30,7 @@ def fetch_joke():
         return {"error": "Request to joke API timed out."}
     except requests.exceptions.ConnectionError:
         return {"error": "Could not connect to joke API."}
-    except requests.exceptions.HTTPError as e:
-        return {"error": f"Joke API request failed: {e}"}
+    except requests.exceptions.HTTPError:
+        return {"error": "Joke API request failed with an HTTP error."}
     except Exception:
         return {"error": "An unexpected error occurred while fetching a joke."}
