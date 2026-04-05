@@ -45,5 +45,5 @@ python app.py
 ## Running Tests
 
 ```bash
-python -m pytest test_joke.py -v
+python -m unittest test_joke -v
 ```
